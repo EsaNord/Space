@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
-	[SerializeField] public GameManager manager;
+	private GameManager manager;
+
+	private float targetRotation;
 
 	private float angle = 90f;
 	private float rotation = 5f;
@@ -25,13 +27,15 @@ public class Ship : MonoBehaviour {
 	}
 	public IEnumerator rotate(bool dir){
 		if(!dir){
-			while(manager.ShipIsRotating && transform.rotation.z > (transform.rotation.z - angle)){
+			targetRotation = transform.rotation.z - angle;
+			while(transform.rotation.z > targetRotation){
 				transform.RotateAround(transform.GetComponent<Renderer>().bounds.center, Vector3.back , rotation * Time.deltaTime);
 				yield return null;	
 			}
 		}
 		else {
-			while(manager.ShipIsRotating && transform.rotation.z < (transform.rotation.z + angle)){
+			targetRotation = transform.rotation.z + angle;
+			while(transform.rotation.z < targetRotation){
 				transform.RotateAround(transform.GetComponent<Renderer>().bounds.center, Vector3.forward, rotation * Time.deltaTime);
 				yield return null;	
 			}

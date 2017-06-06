@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	[SerializeField] public GameManager manager;
+	private GameManager manager;
 	private Rigidbody2D rb;
 
 	private Animator animator;
 	public float speed = 700f;
-	public float jumpForce  = 400f;
+	public float jumpForce  = 200f;
 	private bool canJump = false;
+	private bool facingRight = true;
+
+	private GameObject[] bodyparts;
 
 	// Use this for initialization
 	void Start () {
 		manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
 		rb = gameObject.GetComponent<Rigidbody2D>();
+		//bodyparts = GameObject.FindGameObjectsWithTag("bodyparts");
 		animator = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		checkJumping();
+		checkFacing();
 		move();
 		takeAction();
 	}
@@ -57,25 +62,33 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	public void animate(bool dir){
+	public void setFacing(bool dir){
 		if(!dir){
-			animator.SetBool("moving", true);
-			foreach(Transform child in transform){
-				if(child.GetComponent<SpriteRenderer>() != null){
-					child.GetComponent<SpriteRenderer>().flipX = true;
-				}
-				
+			if(facingRight){
+				facingRight = false;
+				Vector3 theScale = transform.localScale;
+				theScale.x *= -1f;
+				transform.localScale = theScale;
 			}
 		}
 		else {
-			animator.SetBool("moving", true);
-			foreach(Transform child in transform){
-				if(child.GetComponent<SpriteRenderer>() != null){
-					child.GetComponent<SpriteRenderer>().flipX = false;
-				}
+			if(!facingRight){
+				facingRight = true;
+				Vector3 theScale = transform.localScale;
+				theScale.x *= -1f;
+				transform.localScale = theScale;
 			}
 		}
 	}
+	public void checkFacing(){
+		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)){
+			setFacing(false);
+		}
+		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)){
+			setFacing(true);
+		}
+	}
+
 	private void move(){
 		if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)){ //Jump
 			if(canJump){
@@ -83,14 +96,14 @@ public class Player : MonoBehaviour {
 			}
 		}
 		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)){ //Move left
-			animate(false);
+			
 			rb.AddForce(Vector2.left * speed * Time.deltaTime);
 			if(rb.velocity.x <= -6f){
 				rb.velocity = new Vector2(-6f, rb.velocity.y);
 			}
 		}
 		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)){ //Move right
-			animate(true);
+			
 			rb.AddForce(Vector2.right * speed * Time.deltaTime);
 			if(rb.velocity.x >= 6){
 				rb.velocity = new Vector2(6f, rb.velocity.y);
