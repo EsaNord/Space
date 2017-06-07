@@ -108,12 +108,6 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &65844272 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114450246676812132, guid: 5b0c8f9acb0c618489c6275c924fe74e,
-    type: 2}
-  m_PrefabInternal: {fileID: 703706504}
-  m_Script: {fileID: 11500000, guid: 2281e9b57d32b7d498883bb9d984088e, type: 3}
 --- !u!1 &67759955
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +445,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -18.63
+      value: -18.78
       objectReference: {fileID: 0}
     - target: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -480,6 +474,10 @@ Prefab:
     - target: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
@@ -1209,7 +1207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e9e944c790c514eb95c9093d30e154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 65844272}
 --- !u!4 &729066300
 Transform:
   m_ObjectHideFlags: 0
