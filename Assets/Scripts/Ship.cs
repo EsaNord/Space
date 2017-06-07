@@ -9,7 +9,7 @@ public class Ship : MonoBehaviour {
 	private float targetRotation;
 
 	private float angle = 90f;
-	private float rotation = 5f;
+	private float rotation = 15f;
 	private bool rotationDirection = false;
 
 	// Use this for initialization
@@ -22,25 +22,36 @@ public class Ship : MonoBehaviour {
 		
 	}
 
-	public void startRotating(bool dir){
-		StartCoroutine(rotate(rotationDirection));
-	}
-	public IEnumerator rotate(bool dir){
-		if(!dir){
-			targetRotation = transform.rotation.z - angle;
-			while(transform.rotation.z > targetRotation){
+	public void startRotating(bool dir){	
+			if(!dir){
+				targetRotation = transform.rotation.z - angle;
+				transform.RotateAround(transform.localPosition, Vector3.back , -angle * Time.deltaTime);
+			}
+			else
+			{
+				transform.RotateAround(transform.localPosition, Vector3.back , angle * Time.deltaTime);
+				targetRotation = transform.rotation.z + angle;
+			}
+			//StartCoroutine(rotate(rotationDirection, targetRotation));
+			
+	}/* 
+	public IEnumerator rotate(bool dir, float target){
+		if(!dir){			
+			while(transform.rotation.z > target){
+				manager.ShipIsRotating = true;
 				transform.RotateAround(transform.localPosition, Vector3.back , -rotation * Time.deltaTime);
 				yield return null;	
 			}
 		}
 		else {
+			manager.ShipIsRotating = true;
 			targetRotation = transform.rotation.z + angle;
-			while(transform.rotation.z < targetRotation){
+			while(transform.rotation.z < target){
 				transform.RotateAround(transform.localPosition, Vector3.forward, rotation * Time.deltaTime);
 				yield return null;	
 			}
 		}
 		manager.ShipIsRotating = false;
 		yield return true;		
-	}
+	}*/
 }

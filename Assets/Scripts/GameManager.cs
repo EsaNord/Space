@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void rotateShip(bool dir){
-		ship.startRotating(dir);
-		shipIsRotating = true;
+			ship.startRotating(dir);
 	}
 }

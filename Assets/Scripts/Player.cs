@@ -34,12 +34,16 @@ public class Player : MonoBehaviour {
 
 	private void takeAction(){
 		if(Input.GetKeyDown(KeyCode.PageDown) || Input.GetKeyDown(KeyCode.Q)){
-			print("Rotating ship counter-clockwise");
-			manager.rotateShip(false);
+			if(manager.ShipIsRotating == false){
+				print("Rotating ship counter-clockwise");
+				manager.rotateShip(false);
+			}
 		}
 		else if( Input.GetKeyDown(KeyCode.PageUp) || Input.GetKeyDown(KeyCode.E)){
-			print("Rotating ship clockwise");
-			manager.rotateShip(true);
+			if(manager.ShipIsRotating == false){
+				print("Rotating ship clockwise");
+				manager.rotateShip(true);
+			}
 		}
 		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) ||
 			Input.GetKeyDown(KeyCode.F)){
@@ -131,6 +135,6 @@ public class Player : MonoBehaviour {
 			rb.velocity = new Vector2(0, rb.velocity.y);
 			animator.SetBool("moving", false);
 		}
-		print(rb.velocity.x);
+		//print(rb.velocity.x);
 	}
 }
