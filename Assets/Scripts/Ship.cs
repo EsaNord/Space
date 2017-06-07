@@ -29,14 +29,14 @@ public class Ship : MonoBehaviour {
 		if(!dir){
 			targetRotation = transform.rotation.z - angle;
 			while(transform.rotation.z > targetRotation){
-				transform.RotateAround(transform.GetComponent<Renderer>().bounds.center, Vector3.back , rotation * Time.deltaTime);
+				transform.RotateAround(transform.localPosition, Vector3.back , -rotation * Time.deltaTime);
 				yield return null;	
 			}
 		}
 		else {
 			targetRotation = transform.rotation.z + angle;
 			while(transform.rotation.z < targetRotation){
-				transform.RotateAround(transform.GetComponent<Renderer>().bounds.center, Vector3.forward, rotation * Time.deltaTime);
+				transform.RotateAround(transform.localPosition, Vector3.forward, rotation * Time.deltaTime);
 				yield return null;	
 			}
 		}

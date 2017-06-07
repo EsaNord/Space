@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		checkJumping();
+		checkFalling();
 		checkFacing();
 		move();
 		takeAction();
@@ -46,16 +47,33 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	private void checkJumping(){
-		float originX = transform.position.x - transform.localScale.x/2;
-		float originX2 = transform.position.x + transform.localScale.x/2;
-		float originY = transform.position.y - transform.localScale.y/2;
-		RaycastHit2D hit1, hit2;
-		hit1 = Physics2D.Raycast(new Vector2(originX, originY), Vector2.down, 0.5f);
-		hit2 = Physics2D.Raycast(new Vector2(originX2, originY), Vector2.down, 0.5f);
+	private void checkFalling(){
+		if(rb.velocity.y < -0.1f){
+			animator.SetBool("falling", true);
+		}
+		else {
+			animator.SetBool("falling", false);
+		}
+	}
 
-		if(hit1 || hit2){ //raycasts detect ground -> player can jump
+	private void checkJumping(){
+		float originX = transform.localPosition.x - transform.localScale.x/5.5f;
+		float originX2 = transform.localPosition.x + transform.localScale.x/5;
+		float originX3 = transform.localPosition.x;
+		float originY = transform.localPosition.y - transform.localScale.y/2;
+		float originY2 = transform.localPosition.y;
+		RaycastHit2D hit1, hit2, hit3, hitBox;
+		hit1 = Physics2D.Raycast(new Vector2(originX, originY), Vector2.down, 0.55f, 1);
+		hit2 = Physics2D.Raycast(new Vector2(originX2, originY), Vector2.down, 0.55f, 1);
+		hit3 = Physics2D.Raycast(new Vector2(originX3, originY2), Vector2.down, 0.55f, 1);
+		hitBox = Physics2D.BoxCast(new Vector2(originX3, originY), new Vector2(0.5f,0.5f), 0, Vector2.down, 0.2f, 1);
+		
+
+		if(hitBox){ //raycasts detect ground -> player can jump
+			Debug.DrawLine(new Vector2(originX, originY), new Vector2(originX, originY-0.2f), Color.green);
+			Debug.DrawLine(new Vector2(originX2, originY), new Vector2(originX2, originY-0.2f), Color.green);
 			canJump = true;
+			animator.SetBool("falling", false);
 		}
 		else{
 			canJump = false;
@@ -96,18 +114,18 @@ public class Player : MonoBehaviour {
 			}
 		}
 		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)){ //Move left
-			
 			rb.AddForce(Vector2.left * speed * Time.deltaTime);
 			if(rb.velocity.x <= -6f){
 				rb.velocity = new Vector2(-6f, rb.velocity.y);
 			}
+			animator.SetBool("moving", true);
 		}
 		else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)){ //Move right
-			
 			rb.AddForce(Vector2.right * speed * Time.deltaTime);
 			if(rb.velocity.x >= 6){
 				rb.velocity = new Vector2(6f, rb.velocity.y);
 			}
+			animator.SetBool("moving", true);
 		}
 		else{
 			rb.velocity = new Vector2(0, rb.velocity.y);

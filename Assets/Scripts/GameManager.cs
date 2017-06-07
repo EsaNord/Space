@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour {
 	public bool GameOver {get {return gameOver;} set{gameOver=value;}}
 	public bool ShipIsRotating {get {return shipIsRotating;} set{shipIsRotating = value;}}
 
-	// Use this for initialization
 	void Start () {
 		manager = this;
 	}
