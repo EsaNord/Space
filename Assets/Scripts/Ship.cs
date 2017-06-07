@@ -19,34 +19,73 @@ public class Ship : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(manager.ShipIsRotating){
+			rotate(targetRotation);
+		}
 	}
 
-	public void startRotating(bool dir){	
+	public void startRotating(bool dir){
+		print("at startRotating()");	
+			rotationDirection = dir;
+			
 			if(!dir){
-				targetRotation = transform.rotation.z - angle;
-				transform.RotateAround(transform.localPosition, Vector3.back , -angle * Time.deltaTime);
+				targetRotation = transform.eulerAngles.z - angle;
+				if(targetRotation < 0){
+					targetRotation += 360;
+					transform.RotateAround(transform.localPosition, Vector3.back , 1f * Time.deltaTime);
+				}
+				//transform.RotateAround(transform.localPosition, Vector3.back , -angle * Time.deltaTime);
 			}
 			else
 			{
-				transform.RotateAround(transform.localPosition, Vector3.back , angle * Time.deltaTime);
-				targetRotation = transform.rotation.z + angle;
+				//transform.RotateAround(transform.localPosition, Vector3.back , angle * Time.deltaTime);
+				targetRotation = transform.eulerAngles.z + angle;
 			}
-			//StartCoroutine(rotate(rotationDirection, targetRotation));
-			
-	}/* 
-	public IEnumerator rotate(bool dir, float target){
-		if(!dir){			
-			while(transform.rotation.z > target){
+			print("TargetRotation: " + targetRotation);
+			if(manager.ShipIsRotating == false){
+				rotate(targetRotation);
 				manager.ShipIsRotating = true;
-				transform.RotateAround(transform.localPosition, Vector3.back , -rotation * Time.deltaTime);
+				//StartCoroutine(rotate(dir, targetRotation));	
+			}			
+	}
+
+	private void rotate(float targetAngle){
+		print(transform.eulerAngles.z);
+		print(targetAngle);
+		if(!rotationDirection){
+				if(transform.eulerAngles.z >= targetAngle){
+				transform.RotateAround(transform.localPosition, Vector3.back , rotation * Time.deltaTime);
+				
+				//korjaa kulmaa
+			}
+			else{
+				manager.ShipIsRotating = false;
+			}
+		}
+		else {
+			if(transform.eulerAngles.z <= targetAngle){
+				transform.RotateAround(transform.localPosition, Vector3.forward , rotation * Time.deltaTime);
+				//korjaa kulmaa
+			}
+			else{
+				manager.ShipIsRotating = false;
+			}
+		}
+		
+	}
+	/*public IEnumerator rotate(bool dir, float target){
+		print("at ENum rotate()");
+		if(!dir){
+			manager.ShipIsRotating = true;			
+			while(transform.rotation.z <= target){
+				
+				transform.RotateAround(transform.localPosition, Vector3.back , -1.0f*rotation * Time.deltaTime);
 				yield return null;	
 			}
 		}
 		else {
 			manager.ShipIsRotating = true;
-			targetRotation = transform.rotation.z + angle;
-			while(transform.rotation.z < target){
+			while(transform.rotation.z >= target){
 				transform.RotateAround(transform.localPosition, Vector3.forward, rotation * Time.deltaTime);
 				yield return null;	
 			}
