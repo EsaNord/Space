@@ -7,6 +7,8 @@ TagManager:
   - switch
   - barrel
   - bodyparts
+  - normaldoor
+  - yellowdoor
   layers:
   - Default
   - TransparentFX
