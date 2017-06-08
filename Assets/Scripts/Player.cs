@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 	public GameObject redKey;
 	public GameObject yellowey;
 
+	private Animator doorAnim;
+
 	public bool[] keys = {false, false, false}; // red, yellow, ???
 	private GameObject[] bodyparts;
 
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) ||
 			Input.GetKeyDown(KeyCode.F)){
 			print("Action button pressed");
+
 		}
 	}
 
@@ -143,7 +146,8 @@ public class Player : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D collider ) {
-		if (collider.gameObject.name == "RedKey") {
+		
+		if (collider.gameObject.name == "RedKey") {			
 			Debug.Log ("red found");
 			keys [0] = true;
 			Destroy (redKey);
@@ -151,6 +155,20 @@ public class Player : MonoBehaviour {
 		if (collider.gameObject.name == "YellowKey") {
 			Debug.Log ("yellow found");
 			keys [1] = true;
+		}
+		if (collider.gameObject.name == "Red1" ||
+		    collider.gameObject.name == "Red2" ||
+		    collider.gameObject.name == "Yellow1") {
+
+			doorAnim = collider.gameObject.GetComponent<Animator>();
+
+			if (collider.gameObject.name == "Red1" ||
+			   collider.gameObject.name == "Red2" && keys [0] == true) {
+				doorAnim.SetBool ("OpenRed", true);
+			}
+			if (collider.gameObject.name == "Yellow1" && keys [1] == true) {
+				doorAnim.SetBool ("OpenYellow", true);
+			}
 		}
 	}
 }
