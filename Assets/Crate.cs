@@ -20,9 +20,11 @@ public class Crate : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(rigid.velocity.x > 2f || rigid.velocity.y > 2f)
+        if(rigid.velocity.x > 0.1f || rigid.velocity.y > 0.1f)
         {
-            audio.Play();
+            if (!audio.isPlaying) {
+                audio.Play();
+            }
         }
     }
 }
