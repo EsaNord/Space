@@ -33,7 +33,7 @@ public class Ship : MonoBehaviour {
 				targetRotation = transform.eulerAngles.z - angle;
 				if(targetRotation < 0){
 					targetRotation += 360;
-					transform.RotateAround(transform.localPosition, Vector3.back , 1f * Time.deltaTime);
+					transform.RotateAround(transform.localPosition, Vector3.forward , 1f * Time.deltaTime);
 				}
 				//transform.RotateAround(transform.localPosition, Vector3.back , -angle * Time.deltaTime);
 			}
@@ -51,24 +51,26 @@ public class Ship : MonoBehaviour {
 	}
 
 	private void rotate(float targetAngle){
-		print(transform.eulerAngles.z);
-		print(targetAngle);
+		print("current: "+transform.eulerAngles.z);
+		print("destination: "+targetAngle);
+		print("direction: "+rotationDirection);
 		if(!rotationDirection){
 				if(transform.eulerAngles.z >= targetAngle){
-				transform.RotateAround(transform.localPosition, Vector3.back , rotation * Time.deltaTime);
-				
-				//korjaa kulmaa
-			}
-			else{
-				manager.ShipIsRotating = false;
-			}
+					transform.RotateAround(transform.localPosition, Vector3.back , rotation * Time.deltaTime);
+				}
+				else{
+					transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
+					manager.ShipIsRotating = false;
+				}
 		}
 		else {
 			if(transform.eulerAngles.z <= targetAngle){
 				transform.RotateAround(transform.localPosition, Vector3.forward , rotation * Time.deltaTime);
+				
 				//korjaa kulmaa
 			}
 			else{
+				transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
 				manager.ShipIsRotating = false;
 			}
 		}
@@ -81,7 +83,7 @@ public class Ship : MonoBehaviour {
                 transform.Translate(new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0f));
             }
         }
-		
+		print("current: "+transform.eulerAngles.z);
 	}
 	/*public IEnumerator rotate(bool dir, float target){
 		print("at ENum rotate()");

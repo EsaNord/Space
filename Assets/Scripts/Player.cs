@@ -13,6 +13,10 @@ public class Player : MonoBehaviour {
 	private bool canJump = false;
 	private bool facingRight = true;
 
+	public GameObject redKey;
+	public GameObject yellowey;
+
+	public bool[] keys = {false, false, false}; // red, yellow, ???
 	private GameObject[] bodyparts;
 
 	// Use this for initialization
@@ -36,13 +40,13 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.PageUp) || Input.GetKeyDown(KeyCode.Q)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship counter-clockwise");
-				manager.rotateShip(true);
+				manager.rotateShip(false);
 			}
 		}
 		else if( Input.GetKeyDown(KeyCode.PageDown) || Input.GetKeyDown(KeyCode.E)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship clockwise");
-				manager.rotateShip(false);
+				manager.rotateShip(true);
 			}
 		}
 		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) ||
@@ -136,5 +140,17 @@ public class Player : MonoBehaviour {
 			animator.SetBool("moving", false);
 		}
 		//print(rb.velocity.x);
+	}
+
+	private void OnTriggerEnter2D(Collider2D collider ) {
+		if (collider.gameObject.name == "RedKey") {
+			Debug.Log ("red found");
+			keys [0] = true;
+			Destroy (redKey);
+		}
+		if (collider.gameObject.name == "YellowKey") {
+			Debug.Log ("yellow found");
+			keys [1] = true;
+		}
 	}
 }
