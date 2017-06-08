@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 	public GameObject redKey;
 	public GameObject yellowey;
 
+	private Animator doorAnim;
+
 	public bool[] keys = {false, false, false}; // red, yellow, ???
 	private GameObject[] bodyparts;
 
@@ -40,18 +42,19 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.PageUp) || Input.GetKeyDown(KeyCode.Q)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship counter-clockwise");
-				manager.rotateShip(false);
+			//	manager.rotateShip(false);
 			}
 		}
 		else if( Input.GetKeyDown(KeyCode.PageDown) || Input.GetKeyDown(KeyCode.E)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship clockwise");
-				manager.rotateShip(true);
+			//	manager.rotateShip(true);
 			}
 		}
 		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) ||
 			Input.GetKeyDown(KeyCode.F)){
 			print("Action button pressed");
+
 		}
 	}
 
@@ -116,7 +119,8 @@ public class Player : MonoBehaviour {
 	}
 
 	private void move(){
-		if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)){ //Jump
+		if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) 
+			|| Input.GetKeyDown(KeyCode.Space)){ //Jump
 			if(canJump){
 				rb.AddForce(Vector2.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
 			}
@@ -142,8 +146,8 @@ public class Player : MonoBehaviour {
 		//print(rb.velocity.x);
 	}
 
-	private void OnTriggerEnter2D(Collider2D collider ) {
-		if (collider.gameObject.name == "RedKey") {
+	private void OnTriggerStay2D(Collider2D collider ) {
+		if (collider.gameObject.name == "RedKey") {			
 			Debug.Log ("red found");
 			keys [0] = true;
 			Destroy (redKey);
@@ -151,6 +155,24 @@ public class Player : MonoBehaviour {
 		if (collider.gameObject.name == "YellowKey") {
 			Debug.Log ("yellow found");
 			keys [1] = true;
+			Destroy (yellowey);
 		}
-	}
+
+		if (Input.GetKey (KeyCode.F)) {			
+			if (collider.gameObject.name == "Red1" ||
+			   collider.gameObject.name == "Red2" ||
+			   collider.gameObject.name == "Yellow1") {
+
+				doorAnim = collider.gameObject.GetComponent<Animator> ();
+
+				if (collider.gameObject.name == "Red1" ||
+				   collider.gameObject.name == "Red2" && keys [0] == true) {
+					doorAnim.SetBool ("OpenRed", true);
+				}
+				if (collider.gameObject.name == "Yellow1" && keys [1] == true) {
+					doorAnim.SetBool ("OpenYellow", true);
+				}
+			}
+		}
+	}	
 }

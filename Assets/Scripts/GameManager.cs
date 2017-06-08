@@ -29,6 +29,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void rotateShip(bool dir){
-			ship.startRotating(dir);
+			//ship.startRotating(dir);
 	}
 }
