@@ -13,6 +13,9 @@ public class Player : MonoBehaviour {
 	private bool canJump = false;
 	private bool facingRight = true;
 
+	public GameObject redKey;
+	public GameObject yellowey;
+
 	public bool[] keys = {false, false, false}; // red, yellow, ???
 	private GameObject[] bodyparts;
 
@@ -143,6 +146,7 @@ public class Player : MonoBehaviour {
 		if (collider.gameObject.name == "RedKey") {
 			Debug.Log ("red found");
 			keys [0] = true;
+			Destroy (redKey);
 		}
 		if (collider.gameObject.name == "YellowKey") {
 			Debug.Log ("yellow found");
