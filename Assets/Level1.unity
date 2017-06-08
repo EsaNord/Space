@@ -2198,6 +2198,11 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 231467739}
   m_Enabled: 1
+--- !u!4 &231467745 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 1959516915}
 --- !u!1 &238350456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2208,6 +2213,7 @@ GameObject:
   - component: {fileID: 238350460}
   - component: {fileID: 238350459}
   - component: {fileID: 238350457}
+  - component: {fileID: 238350458}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -2247,6 +2253,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &238350458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 238350456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246cc59c7a84ea44f87f6b70acfe30c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 231467745}
+  offset: {x: 0, y: 0, z: 4}
 --- !u!33 &238350459
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2261,8 +2280,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 238350456}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -724.9, y: 305.2, z: 3.5}
-  m_LocalScale: {x: 131.58287, y: 86.29096, z: 0.5549921}
+  m_LocalPosition: {x: -739.32, y: 310.7, z: 3.5}
+  m_LocalScale: {x: 24.710705, y: 16.205074, z: 0.10422515}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -19240,11 +19259,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -728
+      value: -739.59
       objectReference: {fileID: 0}
     - target: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 286.43
+      value: 310.77
       objectReference: {fileID: 0}
     - target: {fileID: 4377719309775910, guid: 559851b6d62bd524a983b540eba8c5fb, type: 2}
       propertyPath: m_LocalPosition.z
