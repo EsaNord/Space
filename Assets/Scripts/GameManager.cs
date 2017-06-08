@@ -14,8 +14,13 @@ public class GameManager : MonoBehaviour {
 	public bool GameOver {get {return gameOver;} set{gameOver=value;}}
 	public bool ShipIsRotating {get {return shipIsRotating;} set{shipIsRotating = value;}}
 
+	private AudioListener audioListener;
+	[SerializeField] private AudioClip sfxShipRotate;
+
+
 	void Start () {
 		manager = this;
+		audioListener = GameObject.FindObjectOfType<AudioListener>();
 	}
 	
 	// Update is called once per frame

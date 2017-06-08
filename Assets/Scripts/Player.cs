@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
 	private bool canJump = false;
 	private bool facingRight = true;
 
+	public bool[] keys = {false, false, false}; // red, yellow, ???
 	private GameObject[] bodyparts;
 
 	// Use this for initialization
@@ -36,13 +37,13 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.PageUp) || Input.GetKeyDown(KeyCode.Q)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship counter-clockwise");
-				manager.rotateShip(true);
+				manager.rotateShip(false);
 			}
 		}
 		else if( Input.GetKeyDown(KeyCode.PageDown) || Input.GetKeyDown(KeyCode.E)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship clockwise");
-				manager.rotateShip(false);
+				manager.rotateShip(true);
 			}
 		}
 		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) ||
