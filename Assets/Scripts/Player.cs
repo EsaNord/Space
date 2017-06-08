@@ -119,7 +119,8 @@ public class Player : MonoBehaviour {
 	}
 
 	private void move(){
-		if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)){ //Jump
+		if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) 
+			|| Input.GetKeyDown(KeyCode.Space)){ //Jump
 			if(canJump){
 				rb.AddForce(Vector2.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
 			}
@@ -145,8 +146,7 @@ public class Player : MonoBehaviour {
 		//print(rb.velocity.x);
 	}
 
-	private void OnTriggerEnter2D(Collider2D collider ) {
-		
+	private void OnTriggerStay2D(Collider2D collider ) {
 		if (collider.gameObject.name == "RedKey") {			
 			Debug.Log ("red found");
 			keys [0] = true;
@@ -157,19 +157,22 @@ public class Player : MonoBehaviour {
 			keys [1] = true;
 			Destroy (yellowey);
 		}
-		if (collider.gameObject.name == "Red1" ||
-		    collider.gameObject.name == "Red2" ||
-		    collider.gameObject.name == "Yellow1") {
 
-			doorAnim = collider.gameObject.GetComponent<Animator>();
-
+		if (Input.GetKey (KeyCode.F)) {			
 			if (collider.gameObject.name == "Red1" ||
-			   collider.gameObject.name == "Red2" && keys [0] == true) {
-				doorAnim.SetBool ("OpenRed", true);
-			}
-			if (collider.gameObject.name == "Yellow1" && keys [1] == true) {
-				doorAnim.SetBool ("OpenYellow", true);
+			   collider.gameObject.name == "Red2" ||
+			   collider.gameObject.name == "Yellow1") {
+
+				doorAnim = collider.gameObject.GetComponent<Animator> ();
+
+				if (collider.gameObject.name == "Red1" ||
+				   collider.gameObject.name == "Red2" && keys [0] == true) {
+					doorAnim.SetBool ("OpenRed", true);
+				}
+				if (collider.gameObject.name == "Yellow1" && keys [1] == true) {
+					doorAnim.SetBool ("OpenYellow", true);
+				}
 			}
 		}
-	}
+	}	
 }
