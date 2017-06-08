@@ -138,4 +138,15 @@ public class Player : MonoBehaviour {
 		}
 		//print(rb.velocity.x);
 	}
+
+	private void OnTriggerEnter2D(Collider2D collider ) {
+		if (collider.gameObject.name == "RedKey") {
+			Debug.Log ("red found");
+			keys [0] = true;
+		}
+		if (collider.gameObject.name == "YellowKey") {
+			Debug.Log ("yellow found");
+			keys [1] = true;
+		}
+	}
 }
