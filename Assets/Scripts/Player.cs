@@ -157,6 +157,10 @@ public class Player : MonoBehaviour {
 			keys [1] = true;
 			Destroy (yellowey);
 		}
+		if (collider.gameObject.tag == "EndDoor") {
+			doorAnim = collider.gameObject.GetComponent<Animator> ();
+			doorAnim.SetTrigger ("Open");
+		}
 
 		if (Input.GetKey (KeyCode.F)) {			
 			if (collider.gameObject.name == "Red1" ||

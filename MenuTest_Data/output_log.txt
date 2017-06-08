@@ -9,22 +9,24 @@ Direct3D:
 Begin MonoManager ReloadAssembly
 Platform assembly: C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
 Platform assembly: C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\Assembly-CSharp.dll (this message is harmless)
 Loading C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.101 seconds
+- Completed reload, in  0.028 seconds
 Platform assembly: C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\esano_000\Documents\Unity Projects\Space\MenuTest_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.649166 ms
+UnloadTime: 1.238619 ms
 Setting up 4 worker threads for Enlighten.
-  Thread -> id: 3324 -> priority: 1 
-  Thread -> id: 1ca4 -> priority: 1 
-  Thread -> id: 3c08 -> priority: 1 
-  Thread -> id: 2b68 -> priority: 1 
+  Thread -> id: 1e24 -> priority: 1 
+  Thread -> id: 3b60 -> priority: 1 
+  Thread -> id: 1e58 -> priority: 1 
+  Thread -> id: 3c80 -> priority: 1 

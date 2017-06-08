@@ -9,6 +9,7 @@ TagManager:
   - bodyparts
   - normaldoor
   - yellowdoor
+  - EndDoor
   layers:
   - Default
   - TransparentFX
