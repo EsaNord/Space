@@ -11,6 +11,7 @@ public class Ship : MonoBehaviour {
 	private float angle = 90f;
 	private float rotation = 15f;
 	private bool rotationDirection = false;
+    private int trembleCounter = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -71,6 +72,15 @@ public class Ship : MonoBehaviour {
 				manager.ShipIsRotating = false;
 			}
 		}
+        if(trembleCounter < 3)
+        {
+            trembleCounter++;
+            if(trembleCounter == 3)
+            {
+                trembleCounter = 0;
+                transform.Translate(new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0f));
+            }
+        }
 		
 	}
 	/*public IEnumerator rotate(bool dir, float target){

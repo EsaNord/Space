@@ -36,13 +36,13 @@ public class Player : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.PageUp) || Input.GetKeyDown(KeyCode.Q)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship counter-clockwise");
-				manager.rotateShip(false);
+				manager.rotateShip(true);
 			}
 		}
 		else if( Input.GetKeyDown(KeyCode.PageDown) || Input.GetKeyDown(KeyCode.E)){
 			if(manager.ShipIsRotating == false){
 				print("Rotating ship clockwise");
-				manager.rotateShip(true);
+				manager.rotateShip(false);
 			}
 		}
 		if(Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Return) ||
