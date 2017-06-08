@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4639673776694128}
   - component: {fileID: 108561380792319428}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 95780994985139918}
   - component: {fileID: 249100700438698526}
   - component: {fileID: 61979655231738482}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: antiGravPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1641815092487922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.635, y: 1.7199998, z: 0}
+  m_LocalPosition: {x: -732.823, y: 284.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4639673776694128}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159418812996438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.27, z: -0.91}
+  m_LocalPosition: {x: 0, y: -1.04, z: -0.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4519456453320712}
@@ -107,7 +107,7 @@ Animator:
   m_GameObject: {fileID: 1641815092487922}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f4a6f33f732cd6e4cafea89e477f43fb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6605f5910b6d14a4ba90072bd18a13c1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -205,7 +205,7 @@ AreaEffector2D:
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
   m_ForceAngle: 90
-  m_ForceMagnitude: 15
+  m_ForceMagnitude: 18
   m_ForceVariation: 0
   m_ForceTarget: 0
   m_Drag: 0
