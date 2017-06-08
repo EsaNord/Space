@@ -155,6 +155,7 @@ public class Player : MonoBehaviour {
 		if (collider.gameObject.name == "YellowKey") {
 			Debug.Log ("yellow found");
 			keys [1] = true;
+			Destroy (yellowey);
 		}
 		if (collider.gameObject.name == "Red1" ||
 		    collider.gameObject.name == "Red2" ||
