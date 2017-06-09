@@ -10,6 +10,7 @@ TagManager:
   - normaldoor
   - yellowdoor
   - EndDoor
+  - End
   layers:
   - Default
   - TransparentFX
